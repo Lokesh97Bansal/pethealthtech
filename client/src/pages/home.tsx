@@ -2,6 +2,7 @@ import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
 import PetsUnspokenSide from "@/components/pets-unspoken-side";
 import PetStatsSection from "@/components/pet-stats-section";
+import PetHealthStatistics from "@/components/pet-health-statistics";
 import EmotionalConnection from "@/components/emotional-connection";
 import EmpathyBridge from "@/components/empathy-bridge";
 import PetCarousel from "@/components/pet-carousel";
@@ -18,6 +19,7 @@ export default function Home() {
       <div id="unspoken">
         <PetsUnspokenSide />
       </div>
+      <PetHealthStatistics />
       <PetStatsSection />
       <EmotionalConnection />
       <EmpathyBridge />

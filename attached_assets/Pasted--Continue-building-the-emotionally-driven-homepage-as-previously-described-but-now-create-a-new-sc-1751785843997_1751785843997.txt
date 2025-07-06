@@ -1,0 +1,35 @@
+
+"Continue building the emotionally driven homepage as previously described, but now create a new scroll section that introduces research-backed statistics about pet health concerns. Design this section to feel visually connected to the emotional story above, but use clear, impactful infographics, percentage counters, and visual storytelling.
+Structure this data section as follows:
+📊 Section: The Unspoken Pet Crisis
+Heading: 'The Unspoken Pet Crisis: What the Studies Reveal'
+Subheading: 'Our pets love us unconditionally, but are we giving them the care they deserve?'
+Create three visually separated but connected parts (can be cards or horizontal scroll or vertical blocks):
+Part 1: Obesity Crisis
+Display this stat in large, bold text: '61% of cats and 59% of dogs are overweight or obese.'
+Add a caption: 'Association for Pet Obesity Prevention (APOP, 2022)'
+Use an emotional image of an overweight but adorable pet.
+Use a visual counter to animate the percentage.
+Part 2: Hidden Health Risks
+Show this stat: 'Overweight pets may live up to 2.5 years less.'
+Add: 'Study: Veterinary Practice UK, 2022'
+Show supporting text: 'Obesity increases the risk of diabetes, arthritis, and heart disease.'
+Use minimal icons or infographics for these diseases.
+Part 3: The Lost Pets Tragedy
+Display: '10 million pets go missing each year.'
+Add: 'Source: American Humane Society'
+Show: 'Only 20% are reunited, but microchips triple their chances of returning home.'
+Visual: A sad pet behind a fence or a lost poster graphic.
+📚 Section: References
+After the stats, include a simple list titled 'Sources and Studies' in smaller text at the bottom:
+Association for Pet Obesity Prevention, 2022: petobesityprevention.org
+Veterinary Practice UK, 2022: veterinary-practice.com
+Banfield Pet Hospital Report, 2016: time.com
+American Humane Society: wired.com
+PubMed review, 2024: pubmed.ncbi.nlm.nih.gov
+💡 Additional Design Instructions:
+Use smooth fade-in animations for each stat as the user scrolls.
+Keep the color scheme emotionally warm, consistent with the homepage.
+Use modern, clean icons and charts (pie charts, progress circles, or animated counters).
+Keep the section minimal but visually striking.
+Make sure the page remains fully responsive on mobile and desktop.
