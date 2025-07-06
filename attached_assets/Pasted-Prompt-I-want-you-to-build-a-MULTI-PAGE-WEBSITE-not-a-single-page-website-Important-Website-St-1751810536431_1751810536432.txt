@@ -1,0 +1,105 @@
+Prompt:
+I want you to build a MULTI-PAGE WEBSITE, not a single-page website.
+🔑 Important Website Structure Requirements:
+
+Build a multi-page website with separate pages and separate routes.
+Each page must have its own URL and should be loaded independently.
+DO NOT create a single-page multi-section website.
+DO NOT create a website that just scrolls between sections.
+Each page should be fully independent with its own HTML structure (or React Route).
+Use either:
+Separate HTML files (if using vanilla HTML/CSS/JS)
+OR React Router with multiple route components (if using React)
+Page Structure:
+Home → /home or index.html
+About Us → /about or about.html
+Contact Us → /contact or contact.html
+Smart Parenting Products → /products or products.html
+Blogs → /blogs or blogs.html
+For Vets → /forvets or forvets.html
+Navbar Requirements:
+The navbar must link to each page via a URL route, not scroll to sections.
+Clicking on a navbar item must load the new page, not just jump or scroll.
+Each page should have:
+Its own header
+Its own body content
+Its own footer
+Please confirm that you are building a MULTI-PAGE WEBSITE WITH SEPARATE PAGES, not a single-page multi-section website.
+🎯 Smart Parenting Products Page Detailed Instructions
+
+Build the Smart Parenting Products page for a pet health website, carefully following the design structure and layout of the page: https://www.fitbark.com/ with the following exact requirements:
+📌 Section 1: Hero Section
+Replicate the hero section layout from FitBark’s page.
+Background: Large, high-quality pet image with colorful abstract graphics.
+Text overlay: Use this rephrased text:
+'Introducing the Smartest GPS & Health Tracker for Pets'
+The hero section must be fully responsive with centered text and smooth entrance animations.
+📌 Section 2: Supporting Partners
+Replicate the supporting partners section from FitBark’s page.
+Layout: Logos of media outlets and partners displayed horizontally.
+Include Indian partners like YourStory, Economic Times, Hindustan Times, NDTV, Indian Express.
+Make the code dynamic and easy to update by using a reusable component or an array-based structure to add/remove partners in the future without needing to change the HTML manually.
+📌 Section 3: Feature Highlights with Smartphone Screens
+Replicate the three-smartphone layout from FitBark’s page.
+Design: Three phones side by side, each showing:
+Live GPS Tracking
+Location History
+Health Monitoring
+Each phone should have a hover animation or subtle scaling effect.
+Below each screen, briefly describe the feature.
+Make all images and text content easily replaceable via React props or simple data arrays.
+📌 Section 4: Product Sections
+Build one separate dedicated section per product:
+C09: GPS Tracker
+C08: Sleep & Health Monitor
+Smart Feeder
+Smart Littering Device
+For Each Product:
+
+Strictly follow the visual style of https://maven.pet/.
+Layout:
+Background image of a pet with pet parent.
+Overlay text and graphical callouts directly on the photo using colored boxes, lines, or graphic pointers (exactly like Maven’s product feature style).
+Each feature or benefit must be represented visually on the image.
+For each feature, add a 'Learn More' link that points to the related Blog post.
+After Features:
+
+Add a product description.
+Display a product star rating (similar to Amazon’s style).
+Add a 'Shop Now' button that links to a separate, product-specific shop page.
+Ensure this layout is fully responsive and visually polished.
+📌 Section 5: Additional Design Requirements
+Use React, TypeScript, Tailwind CSS only.
+Implement smooth scrolling, fade-in animations, and subtle hover effects.
+All sections should be modular, reusable, and easily updatable using React components and prop-based structures.
+All navbar links must correctly route to the following pages:
+Home
+Smart Parenting Products
+Blogs
+For Vets
+Contact Us
+About Us
+📌 Separate Product Shop Pages
+For each product, create a dedicated shop page that exactly replicates the layout and design of https://tractive.com/en/pd/gps-tracker-dog.
+Each Shop Page Must Include:
+
+Hero section with product image and description
+Pricing section
+Detailed features section
+Customer reviews section
+Comparison table (if applicable)
+FAQ section
+The design, layout, and content flow should be closely copied from Tractive’s shop page.
+All text, product names, and images must be replaceable and modular for easy updates.
+Each Shop Page should have its own route and URL.
+📌 Page Connection Flow:
+Navbar links → Different Pages (via routes)
+Product "Shop Now" button → Dedicated Shop Page
+Product "Learn More" feature links → Related Blog posts
+🔧 Technical Stack:
+Use React Router for multi-page navigation.
+Use React, TypeScript, Tailwind CSS.
+Use Framer Motion (or Tailwind animation utilities) for smooth transitions.
+Ensure mobile responsiveness and accessibility.
+Build modular components for easy updates.
+Please confirm that you are building a multi-page website with separate routes and independent page loads, not a single-page scrolling site.

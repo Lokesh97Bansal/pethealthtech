@@ -19,21 +19,14 @@ export default function Navigation() {
 
   const navigationItems = [
     { href: "/", label: "Home" },
-    { href: "#for-vets", label: "For Vets" },
-    { href: "#smart-products", label: "Smart Parenting Products" },
-    { href: "#blogs", label: "Blogs" },
-    { href: "#contact", label: "Contact Us" },
+    { href: "/about", label: "About Us" },
+    { href: "/products", label: "Smart Parenting Products" },
+    { href: "/blogs", label: "Blogs" },
+    { href: "/forvets", label: "For Vets" },
+    { href: "/contact", label: "Contact Us" },
   ];
 
-  const scrollToSection = (href: string) => {
-    if (href === "/") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }
+  const handleNavigation = (href: string) => {
     setIsMobileMenuOpen(false);
   };
 
@@ -65,14 +58,17 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
             {navigationItems.map((item) => (
-              <motion.button
-                key={item.href}
-                whileHover={{ scale: 1.05 }}
-                onClick={() => scrollToSection(item.href)}
-                className="text-dark-slate hover:text-warm-brown transition-colors duration-200 font-medium"
-              >
-                {item.label}
-              </motion.button>
+              <Link key={item.href} href={item.href}>
+                <motion.span
+                  whileHover={{ scale: 1.05 }}
+                  onClick={() => handleNavigation(item.href)}
+                  className={`text-dark-slate hover:text-warm-brown transition-colors duration-200 font-medium cursor-pointer ${
+                    location === item.href ? "text-warm-brown font-semibold" : ""
+                  }`}
+                >
+                  {item.label}
+                </motion.span>
+              </Link>
             ))}
           </div>
 
@@ -100,14 +96,17 @@ export default function Navigation() {
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navigationItems.map((item) => (
-                  <motion.button
-                    key={item.href}
-                    whileHover={{ x: 5 }}
-                    onClick={() => scrollToSection(item.href)}
-                    className="block w-full text-left px-3 py-2 text-dark-slate hover:text-warm-brown transition-colors duration-200"
-                  >
-                    {item.label}
-                  </motion.button>
+                  <Link key={item.href} href={item.href}>
+                    <motion.span
+                      whileHover={{ x: 5 }}
+                      onClick={() => handleNavigation(item.href)}
+                      className={`block w-full text-left px-3 py-2 text-dark-slate hover:text-warm-brown transition-colors duration-200 cursor-pointer ${
+                        location === item.href ? "text-warm-brown font-semibold" : ""
+                      }`}
+                    >
+                      {item.label}
+                    </motion.span>
+                  </Link>
                 ))}
               </div>
             </motion.div>
