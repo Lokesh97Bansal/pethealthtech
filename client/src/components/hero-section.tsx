@@ -1,17 +1,38 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import heroImage from "@assets/image_1751736538072.png";
+import { useState, useEffect } from "react";
 
 export default function HeroSection() {
-  const scrollToGallery = () => {
-    const element = document.querySelector("#gallery");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const slides = [
+    {
+      image: heroImage,
+      quote: "They protect, they wait, they love—unconditionally.",
+      description: "Every moment with them is a gift of pure devotion"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1518155317743-a8ff43ea6a5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080",
+      quote: "Guardians of our hearts, defenders of our homes.",
+      description: "Silent protectors who ask for nothing but love in return"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080",
+      quote: "In their eyes, we see the reflection of unconditional love.",
+      description: "A bond that transcends words, deeper than any ocean"
     }
-  };
+  ];
 
-  const scrollToSubmit = () => {
-    const element = document.querySelector("#submit");
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const scrollToNext = () => {
+    const element = document.querySelector("#unspoken");
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
@@ -19,67 +40,62 @@ export default function HeroSection() {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${heroImage})`
-        }}
-      />
+      {/* Background Slides */}
+      {slides.map((slide, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: currentSlide === index ? 1 : 0 }}
+          transition={{ duration: 1.5 }}
+          className="absolute inset-0"
+        >
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${slide.image})`
+            }}
+          />
+        </motion.div>
+      ))}
       
       {/* Hero Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <motion.h1
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <motion.div
+          key={currentSlide}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight"
+          transition={{ duration: 0.8 }}
         >
-          Unconditional Love
-          <motion.span
+          <motion.h1
+            className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-6 leading-tight"
+          >
+            {slides[currentSlide].quote}
+          </motion.h1>
+          
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="block text-soft-coral"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-xl md:text-2xl text-white/80 mb-12 font-light"
           >
-            Lives Here
-          </motion.span>
-        </motion.h1>
-        
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed max-w-2xl mx-auto font-light"
-        >
-          Discover heartwarming stories that celebrate the extraordinary bond between 
-          pets and their families. Every tail wag, gentle nuzzle, and protective moment 
-          tells a story of pure, unconditional love.
-        </motion.p>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.0 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={scrollToSubmit}
-            className="bg-soft-coral hover:bg-opacity-90 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg"
-          >
-            Share Your Story
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={scrollToGallery}
-            className="border-2 border-white text-white hover:bg-white hover:text-dark-slate px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"
-          >
-            Explore Stories
-          </motion.button>
+            {slides[currentSlide].description}
+          </motion.p>
         </motion.div>
+
+        {/* Slide Indicators */}
+        <div className="flex justify-center space-x-2 mt-8">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                currentSlide === index 
+                  ? "bg-white w-8" 
+                  : "bg-white/40 hover:bg-white/60"
+              }`}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Scroll Indicator */}
@@ -87,7 +103,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.2 }}
-        onClick={scrollToGallery}
+        onClick={scrollToNext}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white cursor-pointer"
       >
         <motion.div

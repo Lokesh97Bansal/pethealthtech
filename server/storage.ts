@@ -77,6 +77,7 @@ export class MemStorage implements IStorage {
     const story: Story = {
       ...insertStory,
       id,
+      photoUrl: insertStory.photoUrl || null,
       isApproved: false,
       createdAt: new Date()
     };

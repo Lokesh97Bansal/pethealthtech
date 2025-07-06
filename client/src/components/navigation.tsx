@@ -18,10 +18,11 @@ export default function Navigation() {
   }, []);
 
   const navigationItems = [
-    { href: "#stories", label: "Stories" },
-    { href: "#gallery", label: "Gallery" },
-    { href: "#submit", label: "Share Your Story" },
-    { href: "#about", label: "About" },
+    { href: "/", label: "Home" },
+    { href: "#for-vets", label: "For Vets" },
+    { href: "#smart-products", label: "Smart Parenting Products" },
+    { href: "#blogs", label: "Blogs" },
+    { href: "#contact", label: "Contact Us" },
   ];
 
   const scrollToSection = (href: string) => {
