@@ -11,6 +11,8 @@ import Products from "@/pages/products";
 import Blogs from "@/pages/blogs";
 import ForVets from "@/pages/for-vets";
 import C09GPSTracker from "@/pages/shop/c09-gps-tracker";
+import VetRegistration from "@/pages/vet-registration";
+import PetParentRegistration from "@/pages/pet-parent-registration";
 
 function Router() {
   return (
@@ -22,6 +24,8 @@ function Router() {
       <Route path="/products" component={Products} />
       <Route path="/blogs" component={Blogs} />
       <Route path="/forvets" component={ForVets} />
+      <Route path="/vet-registration" component={VetRegistration} />
+      <Route path="/pet-parent-registration" component={PetParentRegistration} />
       <Route path="/shop/c09-gps-tracker" component={C09GPSTracker} />
       <Route component={NotFound} />
     </Switch>

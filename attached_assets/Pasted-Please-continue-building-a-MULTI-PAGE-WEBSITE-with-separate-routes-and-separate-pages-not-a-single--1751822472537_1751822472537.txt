@@ -1,0 +1,122 @@
+Please continue building a MULTI-PAGE WEBSITE with separate routes and separate pages, not a single-page multi-section website.
+🔑 Website Structure Reminder:
+
+Each page must have its own URL and must load independently.
+Navbar must link to pages, not sections.
+Each page should have its own header, body, and footer.
+Use React Router with multiple route components.
+🚩 Focus Pages: “For Vets” and “Blogs”
+
+📋 For Vets Page Requirements:
+
+Section 1: Showcase of Registered Vets
+Create a right-to-left continuously moving slider showing vet profiles.
+Display 5-6 profiles at a time.
+Each profile should show:
+Vet photo (use Indian names and dummy images)
+Name
+Experience
+City
+The slider should loop infinitely and move automatically.
+Section 2: Vet Testimonials
+Display beautiful testimonials from the featured vets.
+Include:
+Vet photo
+Name and clinic
+Testimonial text about our products and brand.
+Use attractive visuals, background graphics, and soft animations.
+Section 3: Vet Registration
+Add a button: “Join as Vet” that opens a new independent webpage (multi-page, not modal).
+The Vet Registration Form should include:
+Full name
+Qualification
+College name
+Work experience
+Clinic name
+Clinic address
+Upload a profile photo
+Google map location link
+Testimonial about the brand
+Comments on the significance of smart pet care products
+Can offer home consultation? (Yes/No)
+Can offer phone consultation? (Yes/No)
+Available to plan diet and weight management? (Yes/No)
+Phone consultation fee
+Physical clinic consultation fee
+Home visit consultation fee
+Create a backend database to securely store all vet registration data.
+Ensure the database is structured and easily queryable.
+This vet data should be used to show the nearest vet to pet parents.
+Section 4: Pet Parent Registration
+Add a button: “Register as Pet Parent” (or creatively rephrase as “Join as a Pet Family”).
+This should open a new independent webpage for pet parent registration.
+Registration form should include:
+Full name
+Pet name
+Pet breed
+Pet age
+Pet weight
+Important pet health history
+Pet allergies or critical conditions
+Google map location link (will be used to find nearby vets)
+After submitting the form:
+Show nearest registered vets based on Google map distance calculation.
+Display their profiles with consultation options:
+₹50 per phone consultation
+In-clinic consultation (per vet’s fee)
+Home visit consultation (per vet’s fee)
+Allow pet parents to select a vet and book a consultation directly through the platform.
+Section 5: Health Plans
+Showcase health management plans with beautiful visuals, quotes, and soft animations.
+Plans to include:
+Weight Management Plan: ₹1000 per month
+Diet chart preparation
+2 online consultations
+Health Management Plan: ₹2000 per month
+Diet chart preparation
+2 home visits
+Add a shop/subscribe button for each plan.
+📋 Blogs Page Requirements:
+
+Strictly replicate the design, layout, structure, and functionality of https://maven.pet/all-about-pets/.
+Do not miss anything in:
+Blog card design
+Page responsiveness
+Blog filters or categories
+Blog linking behavior
+Layout structure
+When a user clicks on a blog post, a new blog detail page should open.
+The blog detail page must follow the layout of Maven’s blog post detail pages.
+Content Management System (CMS) Requirement:
+Set up a backend structured repository or lightweight CMS that allows an authorized non-developer to add new blogs or edit existing blogs without touching the codebase.
+Ensure:
+Blog title, image, author, and body content can be updated via this system.
+New blogs can be added easily through a form-based interface.
+Recommended options:
+Use JSON-based file storage (if staying lightweight)
+Or use a simple headless CMS like Sanity, Strapi, or Firebase
+Backend Requirements for Blogs:
+Store blogs in a backend database.
+Each blog should have:
+Title
+Featured image
+Author
+Date
+Body content
+Category/tags
+Blogs should be searchable and filterable by category or keyword.
+📋 Technical Requirements:
+
+Use React Router for multi-page navigation.
+Use React + TypeScript + Tailwind CSS.
+Ensure mobile responsiveness across all pages.
+Ensure all navigation links open new pages, not just scroll.
+Connect all forms to a backend database.
+Set up backend APIs for:
+Vet registration
+Pet parent registration
+Blog management
+Include Google Maps distance calculation for vet proximity matching.
+Use smooth animations (Framer Motion or Tailwind animation utilities).
+Ensure all database and file structures are easy to update and scalable.
+Please confirm that you are building a multi-page website with separate pages and independent loads, not a single-page scrolling site.

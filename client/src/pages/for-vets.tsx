@@ -3,6 +3,8 @@ import Footer from "@/components/footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "wouter";
+import { motion } from "framer-motion";
 import { 
   Stethoscope, 
   Activity, 
@@ -11,52 +13,120 @@ import {
   Users, 
   BarChart3, 
   Shield, 
-  Smartphone 
+  Smartphone,
+  Star,
+  Heart,
+  ChevronRight,
+  Phone,
+  Home,
+  Calendar
 } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
 
-const features = [
+// Featured vets data for the slider
+const featuredVets = [
   {
-    icon: Activity,
-    title: "Real-time Health Monitoring",
-    description: "Access continuous health data from your patients' smart devices to make better informed decisions."
+    id: 1,
+    name: "Dr. Priya Sharma",
+    experience: "8 years",
+    city: "Noida",
+    photo: "/api/placeholder/150/150",
+    specialization: "Emergency Care & Surgery"
   },
   {
-    icon: MapPin,
-    title: "Location History & Safety",
-    description: "Help pet owners with safety recommendations based on GPS tracking data and location patterns."
+    id: 2,
+    name: "Dr. Rajesh Kumar",
+    experience: "12 years", 
+    city: "Bangalore",
+    photo: "/api/placeholder/150/150",
+    specialization: "Preventive Medicine"
   },
   {
-    icon: BarChart3,
-    title: "Health Analytics Dashboard",
-    description: "Comprehensive health analytics and trends to support your diagnostic and treatment decisions."
+    id: 3,
+    name: "Dr. Anita Verma",
+    experience: "6 years",
+    city: "Mumbai",
+    photo: "/api/placeholder/150/150",
+    specialization: "Exotic Animals"
   },
   {
-    icon: Clock,
-    title: "Emergency Alerts",
-    description: "Receive immediate notifications when pets show unusual activity or health patterns."
+    id: 4,
+    name: "Dr. Vikram Singh",
+    experience: "15 years",
+    city: "Delhi",
+    photo: "/api/placeholder/150/150",
+    specialization: "Orthopedics"
+  },
+  {
+    id: 5,
+    name: "Dr. Meera Patel",
+    experience: "9 years",
+    city: "Pune",
+    photo: "/api/placeholder/150/150",
+    specialization: "Dermatology"
+  },
+  {
+    id: 6,
+    name: "Dr. Suresh Reddy",
+    experience: "11 years",
+    city: "Hyderabad",
+    photo: "/api/placeholder/150/150",
+    specialization: "Cardiology"
   }
 ];
 
-const benefits = [
+// Vet testimonials data
+const vetTestimonials = [
   {
-    title: "Enhanced Patient Care",
-    description: "Make data-driven decisions with continuous health monitoring between visits.",
-    badge: "Clinical Excellence"
+    id: 1,
+    name: "Dr. Priya Sharma",
+    clinic: "PetCare Plus Clinic, Noida",
+    photo: "/api/placeholder/120/120",
+    testimonial: "Smart pet monitoring devices have revolutionized how I practice veterinary medicine. The continuous health data helps me detect issues early and provide better care to my patients."
   },
   {
-    title: "Improved Client Communication",
-    description: "Share real-time insights with pet owners to improve treatment compliance.",
-    badge: "Client Relations"
+    id: 2,
+    name: "Dr. Rajesh Kumar", 
+    clinic: "Animal Wellness Center, Bangalore",
+    photo: "/api/placeholder/120/120",
+    testimonial: "The GPS tracking and health monitoring features have helped countless pet parents in emergencies. I highly recommend these smart solutions for modern pet care."
   },
   {
-    title: "Early Detection",
-    description: "Identify health issues before they become serious problems.",
-    badge: "Preventive Care"
+    id: 3,
+    name: "Dr. Anita Verma",
+    clinic: "Mumbai Pet Hospital",
+    photo: "/api/placeholder/120/120",
+    testimonial: "Technology like this bridges the gap between regular vet visits, ensuring continuous care for our furry patients. It's the future of veterinary practice."
+  }
+];
+
+// Health plans data
+const healthPlans = [
+  {
+    id: 1,
+    name: "Weight Management Plan",
+    price: "₹1,000",
+    duration: "per month",
+    features: [
+      "Diet chart preparation",
+      "2 online consultations",
+      "Weekly progress tracking",
+      "Nutrition guidance"
+    ],
+    popular: false
   },
   {
-    title: "Practice Efficiency",
-    description: "Streamline consultations with pre-visit health data analysis.",
-    badge: "Workflow"
+    id: 2,
+    name: "Health Management Plan", 
+    price: "₹2,000",
+    duration: "per month",
+    features: [
+      "Diet chart preparation",
+      "2 home visits",
+      "24/7 emergency support",
+      "Comprehensive health monitoring"
+    ],
+    popular: true
   }
 ];
 
@@ -76,108 +146,223 @@ export default function ForVets() {
                 Professional Tools for <span className="text-blue-600">Veterinarians</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Access advanced pet health monitoring data to enhance your practice and provide 
-                exceptional care for your patients.
+                Join our network of verified veterinarians and help pet parents provide 
+                exceptional care for their furry family members.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                  Request Demo Access
-                </Button>
-                <Button size="lg" variant="outline">
-                  Download Clinical Guide
-                </Button>
+                <Link href="/vet-registration">
+                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+                    <Stethoscope className="h-5 w-5 mr-2" />
+                    Join as Vet
+                  </Button>
+                </Link>
+                <Link href="/pet-parent-registration">
+                  <Button size="lg" variant="outline">
+                    <Heart className="h-5 w-5 mr-2" />
+                    Join as a Pet Family
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="py-20">
+        {/* Section 1: Showcase of Registered Vets */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold mb-4">Our Registered Veterinarians</h2>
+              <p className="text-xl text-gray-600">Trusted professionals across India</p>
+            </div>
+            
+            {/* Continuous Moving Slider */}
+            <div className="relative overflow-hidden">
+              <motion.div
+                className="flex space-x-6"
+                animate={{
+                  x: [0, -1800]
+                }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    duration: 20,
+                    ease: "linear"
+                  }
+                }}
+              >
+                {[...featuredVets, ...featuredVets].map((vet, index) => (
+                  <motion.div
+                    key={`${vet.id}-${index}`}
+                    className="flex-shrink-0 w-80"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <Card className="h-full shadow-lg hover:shadow-xl transition-shadow">
+                      <CardContent className="p-6 text-center">
+                        <div className="relative mx-auto w-24 h-24 mb-4">
+                          <img 
+                            src={vet.photo} 
+                            alt={vet.name}
+                            className="w-full h-full rounded-full object-cover"
+                          />
+                          <div className="absolute -bottom-2 -right-2 p-1 bg-green-500 rounded-full">
+                            <Shield className="h-4 w-4 text-white" />
+                          </div>
+                        </div>
+                        <h3 className="text-xl font-semibold mb-2">{vet.name}</h3>
+                        <p className="text-blue-600 font-medium mb-1">{vet.specialization}</p>
+                        <p className="text-gray-600 mb-2">{vet.experience} experience</p>
+                        <div className="flex items-center justify-center text-gray-500">
+                          <MapPin className="h-4 w-4 mr-1" />
+                          <span>{vet.city}</span>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 2: Vet Testimonials */}
+        <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4">Professional Features</h2>
-              <p className="text-xl text-gray-600">
-                Comprehensive tools designed specifically for veterinary professionals
-              </p>
+              <h2 className="text-4xl font-bold mb-4">What Veterinarians Say</h2>
+              <p className="text-xl text-gray-600">Trusted by professionals across India</p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              {features.map((feature, index) => (
-                <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
-                  <CardContent className="p-0">
-                    <div className="flex items-start space-x-4">
-                      <div className="p-3 bg-blue-100 rounded-lg">
-                        <feature.icon className="h-8 w-8 text-blue-600" />
+            <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {vetTestimonials.map((testimonial, index) => (
+                <motion.div
+                  key={testimonial.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.2 }}
+                >
+                  <Card className="h-full p-6 shadow-lg hover:shadow-xl transition-shadow bg-white/80 backdrop-blur-sm">
+                    <CardContent className="p-0">
+                      <div className="flex items-center mb-4">
+                        <img 
+                          src={testimonial.photo} 
+                          alt={testimonial.name}
+                          className="w-16 h-16 rounded-full object-cover mr-4"
+                        />
+                        <div>
+                          <h4 className="font-semibold text-lg">{testimonial.name}</h4>
+                          <p className="text-sm text-gray-600">{testimonial.clinic}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                        <p className="text-gray-600">{feature.description}</p>
+                      <div className="flex mb-4">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                        ))}
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                      <p className="text-gray-700 italic">"{testimonial.testimonial}"</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Benefits Section */}
+        {/* Section 5: Health Plans */}
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold mb-4">Health Management Plans</h2>
+              <p className="text-xl text-gray-600">Comprehensive care packages for pet families</p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {healthPlans.map((plan, index) => (
+                <motion.div
+                  key={plan.id}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <Card className={`h-full relative ${plan.popular ? 'ring-2 ring-blue-500 scale-105' : ''}`}>
+                    {plan.popular && (
+                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <Badge className="bg-blue-600 text-white px-4 py-1">Most Popular</Badge>
+                      </div>
+                    )}
+                    <CardHeader className="text-center">
+                      <CardTitle className="text-2xl mb-2">{plan.name}</CardTitle>
+                      <div className="text-4xl font-bold text-blue-600 mb-2">
+                        {plan.price}
+                        <span className="text-lg text-gray-500 font-normal"> {plan.duration}</span>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-3 mb-8">
+                        {plan.features.map((feature, featureIndex) => (
+                          <li key={featureIndex} className="flex items-center">
+                            <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                              <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                            </div>
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <Button 
+                        size="lg" 
+                        className={`w-full ${plan.popular ? 'bg-blue-600 hover:bg-blue-700' : ''}`}
+                        variant={plan.popular ? 'default' : 'outline'}
+                      >
+                        Subscribe Now
+                        <ChevronRight className="h-5 w-5 ml-2" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Consultation Options Section */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4">Benefits for Your Practice</h2>
-              <p className="text-xl text-gray-600">
-                See how smart pet monitoring enhances veterinary care
-              </p>
+              <h2 className="text-4xl font-bold mb-4">Consultation Options</h2>
+              <p className="text-xl text-gray-600">Flexible consultation modes to serve pet families</p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              {benefits.map((benefit, index) => (
-                <Card key={index}>
-                  <CardHeader>
-                    <div className="flex items-center justify-between mb-2">
-                      <Badge variant="secondary">{benefit.badge}</Badge>
-                    </div>
-                    <CardTitle>{benefit.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600">{benefit.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+            <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Phone className="h-8 w-8 text-green-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Phone Consultation</h3>
+                <p className="text-3xl font-bold text-green-600 mb-2">₹50</p>
+                <p className="text-gray-600 mb-4">Quick advice and guidance over the phone</p>
+                <Button variant="outline" size="sm">Learn More</Button>
+              </Card>
 
-        {/* CTA Section */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <Card className="max-w-4xl mx-auto p-8 text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-              <CardContent className="p-0">
-                <div className="flex justify-center mb-6">
-                  <div className="p-4 bg-white/20 rounded-full">
-                    <Users className="h-12 w-12" />
-                  </div>
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Stethoscope className="h-8 w-8 text-blue-600" />
                 </div>
-                <h2 className="text-3xl font-bold mb-4">
-                  Join the Future of Veterinary Care
-                </h2>
-                <p className="text-xl mb-8 opacity-90">
-                  Connect with pet owners and their smart devices to provide better, 
-                  more informed care for your patients.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" variant="secondary">
-                    <Smartphone className="h-5 w-5 mr-2" />
-                    Get Professional Access
-                  </Button>
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
-                    <Shield className="h-5 w-5 mr-2" />
-                    Learn About Security
-                  </Button>
+                <h3 className="text-xl font-semibold mb-2">In-Clinic Visit</h3>
+                <p className="text-3xl font-bold text-blue-600 mb-2">₹500-600</p>
+                <p className="text-gray-600 mb-4">Comprehensive examination at clinic</p>
+                <Button variant="outline" size="sm">Book Now</Button>
+              </Card>
+
+              <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Home className="h-8 w-8 text-purple-600" />
                 </div>
-              </CardContent>
-            </Card>
+                <h3 className="text-xl font-semibold mb-2">Home Visit</h3>
+                <p className="text-3xl font-bold text-purple-600 mb-2">₹800-1000</p>
+                <p className="text-gray-600 mb-4">Convenient consultation at your home</p>
+                <Button variant="outline" size="sm">Schedule</Button>
+              </Card>
+            </div>
           </div>
         </section>
       </main>
