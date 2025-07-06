@@ -10,10 +10,11 @@ import StoryFeatures from "@/components/story-features";
 import FeaturedStories from "@/components/featured-stories";
 import StorySubmissionForm from "@/components/story-submission-form";
 import Footer from "@/components/footer";
+import ScrollToTop from "@/components/scroll-to-top";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-cream scroll-snap-container">
       <Navigation />
       <HeroSection />
       <div id="unspoken">
@@ -28,6 +29,7 @@ export default function Home() {
       <FeaturedStories />
       <StorySubmissionForm />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }

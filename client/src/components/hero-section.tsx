@@ -1,10 +1,18 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import heroImage from "@assets/image_1751736538072.png";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   
   const slides = [
     {
@@ -39,8 +47,8 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Slides */}
+    <section ref={containerRef} className="relative h-screen flex items-center justify-center overflow-hidden scroll-snap-section">
+      {/* Background Slides with Parallax */}
       {slides.map((slide, index) => (
         <motion.div
           key={index}
@@ -49,11 +57,12 @@ export default function HeroSection() {
           transition={{ duration: 1.5 }}
           className="absolute inset-0"
         >
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${slide.image})`
+          <motion.div 
+            style={{ 
+              y,
+              backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(${slide.image})`
             }}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           />
         </motion.div>
       ))}

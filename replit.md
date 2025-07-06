@@ -95,6 +95,16 @@ PetStories is a modern full-stack web application that allows pet owners to shar
 
 ## Changelog
 - July 06, 2025. Initial setup
+- July 06, 2025. Enhanced homepage with emotionally-driven storytelling approach
+  - Added new sections: Pet's Unspoken Side, Pet Health Statistics, Emotional Connection, Empathy Bridge
+  - Implemented research-backed statistics with animated counters and visual infographics
+  - Added circular progress indicators and interactive stat cards
+  - Integrated parallax effects and smooth scroll animations throughout
+  - Added scroll-to-top button for better navigation
+  - Applied Poppins font family for modern typography
+  - Enhanced all sections with emotionally resonant copy and high-quality visuals
+  - Implemented scroll snap for section-by-section navigation
+  - Added comprehensive references section with clickable source links
 
 ## User Preferences
 

@@ -14,16 +14,23 @@ export default function EmotionalConnection() {
   const quotes = [
     {
       text: "Having a pet is not just companionship — it's a promise.",
-      image: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800"
+      subtitle: "A promise to protect, care, and love until their last breath",
+      image: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080"
     },
     {
-      text: "Be worthy of their unconditional love.",
-      image: "https://images.unsplash.com/photo-1543852786-1cf6624b9987?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800"
+      text: "They give us their entire lives. What do we give them?",
+      subtitle: "Be worthy of their unconditional love",
+      image: "https://images.unsplash.com/photo-1543852786-1cf6624b9987?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080"
+    },
+    {
+      text: "In their eyes, we are their whole world.",
+      subtitle: "Let's make their world a better place",
+      image: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080"
     }
   ];
 
   return (
-    <section ref={ref} className="relative min-h-screen bg-dark-brown">
+    <section ref={ref} className="relative min-h-screen bg-dark-brown scroll-snap-section">
       <motion.div style={{ opacity }} className="absolute inset-0">
         {quotes.map((quote, index) => (
           <motion.div
@@ -56,6 +63,17 @@ export default function EmotionalConnection() {
                 >
                   {quote.text}
                 </motion.h2>
+                {quote.subtitle && (
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.5, delay: 0.8 }}
+                    viewport={{ once: true }}
+                    className="text-xl md:text-2xl text-white/80 mt-6"
+                  >
+                    {quote.subtitle}
+                  </motion.p>
+                )}
               </motion.div>
             </div>
           </motion.div>
