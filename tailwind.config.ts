@@ -65,6 +65,16 @@ export default {
           border: "var(--sidebar-border)",
           ring: "var(--sidebar-ring)",
         },
+        // Custom pet story theme colors
+        "warm-brown": "var(--warm-brown)",
+        "medium-brown": "var(--medium-brown)",
+        "soft-coral": "var(--soft-coral)",
+        "cream": "var(--cream)",
+        "dark-slate": "var(--dark-slate)",
+        "pale-green": "var(--pale-green)",
+        "dark-brown": "var(--dark-brown)",
+        "near-black": "var(--near-black)",
+        "dark-grey-brown": "var(--dark-grey-brown)",
       },
       keyframes: {
         "accordion-down": {

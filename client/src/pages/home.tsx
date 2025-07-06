@@ -14,7 +14,7 @@ import ScrollToTop from "@/components/scroll-to-top";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-cream scroll-snap-container">
+    <div className="min-h-screen bg-white">
       <Navigation />
       <HeroSection />
       <div id="unspoken">
