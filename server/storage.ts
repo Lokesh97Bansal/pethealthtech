@@ -150,7 +150,16 @@ export class MemStorage implements IStorage {
       ...insertVet,
       id,
       approved: false,
-      createdAt: new Date()
+      createdAt: new Date(),
+      profilePhotoUrl: insertVet.profilePhotoUrl || null,
+      mapLocationLink: insertVet.mapLocationLink || null,
+      testimonial: insertVet.testimonial || null,
+      smartCareComments: insertVet.smartCareComments || null,
+      phoneConsultationFee: insertVet.phoneConsultationFee || null,
+      clinicConsultationFee: insertVet.clinicConsultationFee || null,
+      homeVisitFee: insertVet.homeVisitFee || null,
+      latitude: insertVet.latitude || null,
+      longitude: insertVet.longitude || null
     };
     this.vets.set(id, vet);
     return vet;
@@ -190,7 +199,12 @@ export class MemStorage implements IStorage {
     const petParent: PetParent = {
       ...insertPetParent,
       id,
-      createdAt: new Date()
+      createdAt: new Date(),
+      healthHistory: insertPetParent.healthHistory || null,
+      allergies: insertPetParent.allergies || null,
+      mapLocationLink: insertPetParent.mapLocationLink || null,
+      latitude: insertPetParent.latitude || null,
+      longitude: insertPetParent.longitude || null
     };
     this.petParents.set(id, petParent);
     return petParent;
@@ -207,7 +221,11 @@ export class MemStorage implements IStorage {
       ...insertBlog,
       id,
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      featuredImage: insertBlog.featuredImage || null,
+      excerpt: insertBlog.excerpt || null,
+      tags: insertBlog.tags || null,
+      published: insertBlog.published ?? false
     };
     this.blogs.set(id, blog);
     return blog;

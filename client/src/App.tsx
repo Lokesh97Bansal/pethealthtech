@@ -13,6 +13,7 @@ import ForVets from "@/pages/for-vets";
 import C09GPSTracker from "@/pages/shop/c09-gps-tracker";
 import VetRegistration from "@/pages/vet-registration";
 import PetParentRegistration from "@/pages/pet-parent-registration";
+import BlogDetail from "@/pages/blog-detail";
 
 function Router() {
   return (
@@ -23,6 +24,7 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/products" component={Products} />
       <Route path="/blogs" component={Blogs} />
+      <Route path="/blog/:slug" component={BlogDetail} />
       <Route path="/forvets" component={ForVets} />
       <Route path="/vet-registration" component={VetRegistration} />
       <Route path="/pet-parent-registration" component={PetParentRegistration} />

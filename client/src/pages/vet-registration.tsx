@@ -16,7 +16,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 import { Stethoscope, Upload, MapPin, Phone, Home, DollarSign } from "lucide-react";
-import type { InsertVet } from "@/shared/schema";
+import type { InsertVet } from "../../../shared/schema";
 
 const vetRegistrationSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -60,11 +60,14 @@ export default function VetRegistration() {
 
   const createVetMutation = useMutation({
     mutationFn: async (data: InsertVet) => {
-      const response = await apiRequest("/api/vets", {
+      const response = await fetch("/api/vets", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
       });
+      if (!response.ok) {
+        throw new Error("Failed to register vet");
+      }
       return response.json();
     },
     onSuccess: () => {

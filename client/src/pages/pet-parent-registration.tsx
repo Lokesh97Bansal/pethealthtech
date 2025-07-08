@@ -14,7 +14,7 @@ import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 import { Heart, MapPin, Phone, Home, Calendar, Star, DollarSign } from "lucide-react";
 import { useState } from "react";
-import type { InsertPetParent, Vet } from "@/shared/schema";
+import type { InsertPetParent, Vet } from "../../../shared/schema";
 
 const petParentRegistrationSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -49,19 +49,18 @@ export default function PetParentRegistration() {
   const { data: nearbyVets, isLoading: vetsLoading } = useQuery({
     queryKey: ["/api/vets/nearby"],
     enabled: showNearbyVets,
-    queryFn: async () => {
-      const response = await apiRequest("/api/vets/approved");
-      return response.json();
-    }
   });
 
   const createPetParentMutation = useMutation({
     mutationFn: async (data: InsertPetParent) => {
-      const response = await apiRequest("/api/pet-parents", {
+      const response = await fetch("/api/pet-parents", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
       });
+      if (!response.ok) {
+        throw new Error("Failed to register pet parent");
+      }
       return response.json();
     },
     onSuccess: () => {

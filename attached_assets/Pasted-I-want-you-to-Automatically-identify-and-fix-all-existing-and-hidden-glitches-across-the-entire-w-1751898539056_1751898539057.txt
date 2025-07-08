@@ -1,0 +1,74 @@
+I want you to:
+✅ Automatically identify and fix all existing and hidden glitches across the entire website.
+✅ Fix frontend, backend, navigation, API integration, database connectivity, and data flow issues.
+✅ Ensure all pages and buttons work exactly as intended.
+🔧 Multi-Page Website Reminder:
+I am building a multi-page website with separate HTML files or separate React routes (NOT a single-page scrolling website).
+Each page must have its own independent load and URL.
+Navbar must load new pages, NOT scroll between sections.
+🚨 Critical Glitches and Required Fixes:
+
+1. Smart Parenting Products Page:
+Fully replicate the frontend and backend content, style, layout, and feature explanation from https://www.fitbark.com/ for the Smart Parenting Products page.
+For each product (C08 and C09):
+Accurately replicate the multi-feature explanation style from FitBark.
+Ensure each product can display multiple features/benefits using beautiful visual representations (just like FitBark).
+For now, you can repeat features across the two products using different visuals.
+Set up a dynamic system so that in the future, I can easily add new features or update visuals through a simple structured file or backend system without touching the code.
+2. Shop Now Button Issue:
+Fix the Shop Now button’s navigation.
+The button should correctly open the product’s shop page in a new webpage.
+Strictly replicate the frontend and backend of the product shop page from https://www.fitbark.com/store/fitbarkgps.
+The shop page should fully replicate:
+Hero section
+Product description
+Pricing section
+Features section
+Customer reviews
+Add-to-cart system
+FAQ (if applicable)
+Ensure the shop page is fully working, navigable, and mobile responsive.
+3. Blog Webpage Backend Issue:
+The blog backend is not ready. Fix this completely.
+When a user clicks on a blog post, it should open a new dedicated blog page with the full blog content displayed.
+Strictly copy the content, layout, and backend structure from https://maven.pet/all-about-pets/.
+Implement a backend content management system (CMS) or structured repository so that an authorized person can:
+Add new blogs
+Edit existing blogs
+Without touching the codebase
+Provide an admin interface or file-based blog management system.
+Ensure all blog links, detail pages, and backend are fully connected and operational.
+4. Vet and Pet Family Registration Errors:
+Fix the fetch error:
+[plugin:runtime-error-plugin] Failed to execute 'fetch' on 'Window': '/api/vets' is not a valid HTTP method.
+Correct all API endpoints and HTTP methods.
+Ensure all registration forms (Vet registration and Pet Family registration) are fully functional and successfully submit data to the backend database.
+Set up backend APIs correctly for both registration forms.
+Store all data in a structured backend database.
+5. Nearest Vet Search Feature:
+Implement a “Find Nearest Vets” feature:
+Pet parent enters their Google Maps location link.
+Pet parent can specify the radius in KM for the search.
+System calculates distance from the stored vet locations (based on their Google Maps links).
+Display the nearest vets within the selected radius, sorted by distance.
+Display vet profiles with consultation options:
+Phone call consultation (₹50)
+In-clinic consultation (vet’s fee)
+Home visit consultation (vet’s fee)
+Ensure the distance calculation, vet search functionality, and booking system work seamlessly.
+🛠️ General Instructions:
+
+Identify and fix all other glitches, both known and hidden.
+Ensure all page navigations work correctly.
+Ensure all frontend and backend functionalities are properly connected.
+Make the entire system mobile responsive.
+Use modular, reusable components and scalable backend structures.
+Make product feature updates, blog updates, and partner updates easily manageable without requiring future code changes.
+Please confirm you have fixed all errors and completed all backend and frontend integrations.
+💡 Technology Stack:
+
+React + TypeScript + Tailwind CSS
+React Router for multi-page navigation
+Proper backend API setup with structured database
+Optional: Framer Motion or Tailwind animations for smooth transitions
+Please complete all of the above in one shot, as I have limited credits remaining.
