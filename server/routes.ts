@@ -5,6 +5,11 @@ import { insertStorySchema, insertVetSchema, insertPetParentSchema, insertBlogSc
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Health check endpoint for Render
+  app.get("/health", (_req, res) => {
+    res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
+  });
+
   // Stories API
   app.get("/api/stories", async (req, res) => {
     try {
